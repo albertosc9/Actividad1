@@ -17,13 +17,28 @@ import com.google.gson.JsonParser;
 
 public class Director {
 
-	String ruta = "C:\\Users\\alumnoA\\Downloads\\dam2-aadd-ficheros-master\\recursos\\info-config.properties";
+	String ruta = "recursos\\info-config.properties";
 			
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
 	
 	
+	File fichero = new File("recursos\\info-config.properties");
+	String sFichero="";
+	
+	try {
+		sFichero=new String(Files.readAllBytes(fichero.toPath()));
+		File f = new File("recursos\\info-config.json");
+		
+		f.createNewFile();
+		
+		JsonObject propiedades = JsonParser.parseString(sFichero).getAsJsonObject();
+		
+		String ruta1 = propiedades.get("ruta1").getAsString();
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
 		
 		
 		
